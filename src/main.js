@@ -3,7 +3,7 @@ import $ from 'jquery';
 
 $(document).ready(function () {
   $('.define').click(function () {
-    $(`#doctorsList`).text('')
+    $(`#doctorsList`).text('');
     let word = $('#word').val();
     $('#word').val('');
     let findDoctor = new DoctorFinder();
