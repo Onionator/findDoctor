@@ -12,7 +12,13 @@ $(document).ready(function () {
     promise.then(function (response) {
       let body = JSON.parse(response);
       console.log(body);
-      $('.doctorName').html(body.data[0].practices[0].accepts_new_patients);
+      for (let i = 0; i < 3; i++) {
+        $(`#doctorName${i}`).html(body.data[i].practices[0].name);
+        $(`#doctorAddress${i}`).html(`${body.data[i].practices[0].visit_address.street} ${body.data[i].practices[0].visit_address.city}, ${body.data[i].practices[0].visit_address.state} ${body.data[i].practices[0].visit_address.zip}`);
+        $(`#doctorDistance${i}`).html(`${parseInt(body.data[i].practices[0].distance)} miles away.`);
+        $(`#takingNewPatients${i}`).html(` Taking new patients: ${body.data[i].practices[0].accepts_new_patients}`);
+        $(`#doctorWebsite${i}`).html(body.data[i].practices[0].website);
+      }
     });
 
     promiseTwo.then(function (response) {
