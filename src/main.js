@@ -31,6 +31,7 @@ $(document).ready(function () {
             `<div class="doctorsInfo">
             <h2>${body.data[i].practices[0].name}</h2>
             <li>${body.data[i].practices[0].visit_address.street} ${body.data[i].practices[0].visit_address.city}, ${body.data[i].practices[0].visit_address.state} ${body.data[i].practices[0].visit_address.zip}</li>
+            <li>phone number: ${body.data[i].practices[0].phones[0].number}</li>
             <li>${parseInt(body.data[i].practices[0].distance)} miles away.</li>
             <li>Taking new patients: ${body.data[i].practices[0].accepts_new_patients}</li>
             <li>website: ${body.data[i].practices[0].website}</li>
@@ -57,6 +58,7 @@ $(document).ready(function () {
             <img src="${body.data[i].profile.image_url}" alt="picture of ${body.data[i].profile.first_name} ${body.data[i].profile.last_name}, ${body.data[i].profile.title}">
             <h2>${body.data[i].profile.first_name} ${body.data[i].profile.last_name}, ${body.data[i].profile.title}</h2>
             <li>${body.data[i].practices[0].visit_address.street} ${body.data[i].practices[0].visit_address.city}, ${body.data[i].practices[0].visit_address.state} ${body.data[i].practices[0].visit_address.zip}</li>
+            <li>phone number: ${body.data[i].practices[0].phones[0].number}</li>
             <li>${parseInt(body.data[i].practices[0].distance)} miles away.</li>
             <li>Taking new patients: ${body.data[i].practices[0].accepts_new_patients}</li>
             <li>website: ${body.data[i].practices[0].website}</li>
