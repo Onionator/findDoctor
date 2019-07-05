@@ -1,6 +1,21 @@
 import { DoctorFinder } from './findDoctor';
 import $ from 'jquery';
 
+function witnessProtectionProtocol(word) {
+  let timer = 10;
+  const selfDestruct = setInterval(countDown, 1000);
+  function countDown() {
+    if (timer > 0) {
+      $(`#doctorsList`).html(`<h2>Sorry, but ${word} is in witness protection and no longer goes by that name. If you would like to contact ${word} you will need to get <em>Top Secret</em> level security clearance. This page will self destruct in ${timer} seconds.</h2>`);
+      timer--;
+    } else {
+      clearInterval(selfDestruct);
+      $(`body`).text('');
+      document.body.style.background = '#000';
+    }
+  }
+}
+
 $(document).ready(function () {
   $('.btnSymptoms').click(function () {
     $(`#doctorsList`).html('');
@@ -10,7 +25,6 @@ $(document).ready(function () {
     let promise = findDoctor.findADoctor(word);
     promise.then(function (response) {
       let body = JSON.parse(response);
-      console.log(body);
       if (body.data.length > 0) {
         for (let i = 0; i < body.data.length; i++) {
           $(`#doctorsList`).append(
@@ -37,7 +51,6 @@ $(document).ready(function () {
     promise.then(function (response) {
       let body = JSON.parse(response);
       if (body.data.length > 0) {
-        console.log(body);
         for (let i = 0; i < body.data.length; i++) {
           $(`#doctorsList`).append(
             `<div class="doctorsInfo">
@@ -51,18 +64,7 @@ $(document).ready(function () {
           );
         }
       } else {
-        let timer = 10;
-         countDown =>  {
-          if (timer > 0) {
-            $(`#doctorsList`).html(`<h1>Sorry, but ${word} is in witness protection and no longer goes by that name. If you would like to contact ${word} you will need to get <em>Top Secret</em> level security clearance. This page will self destruct in ${timer} seconds.</h1>`);
-            timer--;
-          } else {
-            clearInterval(selfDestruct);
-            $(`#doctorsList`).text('');
-            $('body').style.backgroundColor = '#000';
-          }
-          const selfDestruct = setInterval(countDown, 1000);
-        }
+        witnessProtectionProtocol(word);
       }
     });
   });
