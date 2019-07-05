@@ -12,6 +12,7 @@ $(document).ready(function () {
     promise.then(function (response) {
       let body = JSON.parse(response);
       console.log(body);
+      if (body.data.length > 0) {
       for (let i = 0; i < body.data.length; i++) {
         $(`#doctorsList`).append(
           `<div class="doctorsInfo">
@@ -23,6 +24,9 @@ $(document).ready(function () {
           </div>`
         );
       }
+    } else {
+      $(`#doctorsList`).html(`<h1>Sorry, but we can't help you with your ${word}</h1>`);
+    }
     });
   });
   $('.btnDoctor').click(function () {
@@ -47,6 +51,14 @@ $(document).ready(function () {
           </div>`
         );
       }
+    } else {
+      let timer = 10;
+      let selfDestruct = setInterval(countDown, 1000);
+      function countDown() {
+        timer--;
+      }
+      $(`#doctorsList`).html(`<h1>Sorry, but ${word} is in witness protection and no longer goes by that name. If you would like to contact ${word} you will need to get <em>Top Secret</em> level security clearance. This page will self destruct in ${timer} seconds.</h1>`);
+    }
     });
   });
 });
