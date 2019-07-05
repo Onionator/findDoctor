@@ -7,6 +7,12 @@ $(document).ready(function () {
     $('#word').val('');
     let findADoctor = new DoctorFinder();
     let promise = findADoctor.goAway(word);
+
+
+
+
+
+    
     promise.then(function (response) {
       let body = JSON.parse(response);
       console.log(body);
