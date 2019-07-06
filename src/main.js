@@ -1,6 +1,6 @@
 import { DoctorFinder } from './findDoctor';
 import $ from 'jquery';
-
+// Protect innocent people by taking away all functionality of the program after 10 seconds
 function witnessProtectionProtocol(word) {
   let timer = 10;
   const selfDestruct = setInterval(countDown, 1000);
@@ -12,10 +12,12 @@ function witnessProtectionProtocol(word) {
       clearInterval(selfDestruct);
       $(`body`).text('');
       document.body.style.background = '#000';
+      document.body.style.background = 'url(\'https://i1.wp.com/bloody-disgusting.com/wp-content/uploads/2018/12/killer-klowns-makeup.png?w=1272&ssl=1\')';
+       document.body.style.backgroundSize = 'cover';
     }
   }
 }
-
+// find and display the related results about symptoms when the "Get Help!" button is clicked
 $(document).ready(function () {
   $('.btnSymptoms').click(function () {
     $(`#doctorsList`).html('');
@@ -43,6 +45,7 @@ $(document).ready(function () {
       }
     });
   });
+  // find and display the related results about doctors when the "Get Info!" button is clicked
   $('.btnDoctor').click(function () {
     $(`#doctorsList`).text('');
     let word = $('#doctor').val();
