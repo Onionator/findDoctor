@@ -1,4 +1,5 @@
 import { DoctorFinder } from './findDoctor';
+import './css/styles.css'
 import $ from 'jquery';
 // Protect innocent people by taking away all functionality of the program after 10 seconds
 function witnessProtectionProtocol(word) {
@@ -27,6 +28,7 @@ $(document).ready(function () {
     let promise = findDoctor.findADoctor(word);
     promise.then(function (response) {
       let body = JSON.parse(response);
+      console.log(body);
       if (body.data.length > 0) {
         for (let i = 0; i < body.data.length; i++) {
           $(`#doctorsList`).append(
